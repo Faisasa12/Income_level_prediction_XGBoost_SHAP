@@ -41,3 +41,15 @@ def train_test_from_raw_data(dataset):
     })
     
     return train_test_split(features, target, test_size = 0.2, stratify = target)
+
+def processed_data_from_input(dataset):
+    dataset.columns = [col.replace(".",'_') for col in dataset.columns]
+    dataset = dataset.drop('fnlwgt', axis=1)
+    dataset.replace('?', np.nan, inplace=True)
+    
+    dataset.dropna(inplace=True)
+    
+    dataset = pd.get_dummies(dataset)
+    
+    
+    return dataset
