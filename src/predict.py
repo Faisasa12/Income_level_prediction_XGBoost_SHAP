@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import joblib  
+import xgboost as xgb  
 import argparse
 from preprocess import processed_data_from_input
 
@@ -16,7 +16,11 @@ data = pd.read_csv(args.input)
 
 input = processed_data_from_input(data)
 
-model = joblib.load(args.model)
+model = xgb.XGBClassifier()
+model.load_model(args.model)
+feature_names = model.get_booster().feature_names
+
+input = input.reindex(columns= feature_names, fill_value= 0)
 
 preds = model.predict(input)
 probs = model.predict_proba(input)[:, 1]
