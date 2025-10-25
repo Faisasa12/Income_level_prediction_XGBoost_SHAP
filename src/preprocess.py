@@ -43,13 +43,21 @@ def train_test_from_raw_data(dataset):
     return train_test_split(features, target, test_size = 0.2, stratify = target)
 
 def processed_data_from_input(dataset):
+    og_dataset = pd.read_csv('data/adult_raw.csv')
+    x_train, x_test, y_train, y_test = train_test_from_raw_data(og_dataset)
+    
     dataset.columns = [col.replace(".",'_') for col in dataset.columns]
-    dataset = dataset.drop('fnlwgt', axis=1)
+    
+    if 'fnlwgt' in dataset:
+        dataset = dataset.drop('fnlwgt', axis=1)
+        
     dataset.replace('?', np.nan, inplace=True)
     
     dataset.dropna(inplace=True)
     
     dataset = pd.get_dummies(dataset)
     
+    dataset = dataset.reindex(columns=x_train.columns, fill_value=0)
+    print(dataset)
     
     return dataset
