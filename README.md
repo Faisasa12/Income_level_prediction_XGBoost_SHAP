@@ -22,6 +22,11 @@ The project includes model training and interpretability via **SHAP** and deploy
 
 ---
 
+## Demo Video
+[![Demo video](https://img.youtube.com/vi/0iOa6x6kHx8/0.jpg)](https://www.youtube.com/watch?v=0iOa6x6kHx8)
+
+---
+
 ## How to Use?
 1. **Exploring through notebooks**
     You can take a look at the notebooks where you can interactively:
