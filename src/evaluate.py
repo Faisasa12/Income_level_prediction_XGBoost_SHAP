@@ -12,10 +12,10 @@ def evaluate_model(model_path, X_test, y_test, model_name="Model"):
     y_pred = model.predict(X_test)
     y_prob = model.predict_proba(X_test)[:, 1]
 
-    print("Confusion Matrix:")
+    print(f"Confusion Matrix for {model_name}:")
     print(confusion_matrix(y_test, y_pred))
 
-    print("\nClassification Report:")
+    print(f"\nClassification Report for {model_name}:")
     print(classification_report(y_test, y_pred))
 
     roc_auc = roc_auc_score(y_test, y_prob)
@@ -35,4 +35,5 @@ def evaluate_model(model_path, X_test, y_test, model_name="Model"):
 X_train, X_test, y_train, y_test = train_test_from_path("data/adult_raw.csv")
 
 evaluate_model('models/base_model.json', X_test, y_test, model_name="Base XGBoost")
+print('\n\n\n')
 evaluate_model('models/balanced_model.json', X_test, y_test, model_name="Balanced XGBoost")
