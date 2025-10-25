@@ -132,3 +132,5 @@ shap.waterfall_plot(shap.Explanation(values=shap_values[0].values,
                                      data=input.iloc[0],
                                      feature_names=input.columns))
 st.pyplot(fig)
+
+st.caption('Built by [Faisal Almofadhi](https://github.com/Faisasa12)')
