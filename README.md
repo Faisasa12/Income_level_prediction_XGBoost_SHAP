@@ -73,12 +73,6 @@ The project includes model training and interpretability via **SHAP** and deploy
    
 ---
 
-## 📈 Results
-| Metric    | Score |
-|-----------|-------|
-| Accuracy  | 0.86  |
-| F1-score  | 0.84  |
-
 **Model Feature Importance:**  
 ![XGB Importance](images/xgb_importance.png)
 This is based on the XGB plot importance on the model itself
